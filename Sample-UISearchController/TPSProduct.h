@@ -19,6 +19,8 @@ extern NSString *const ProductTypePortable;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *type;
 
++ (NSArray *)allProducts;
+
 + (instancetype)productWithType:(NSString *)type name:(NSString *)name;
 
 + (NSArray *)deviceTypeNames;

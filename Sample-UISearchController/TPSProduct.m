@@ -16,6 +16,23 @@ NSString *const ProductTypePortable = @"Portable";
 
 @implementation TPSProduct
 
++ (NSArray *)allProducts {
+    return @[[TPSProduct productWithType:ProductTypeDevice name:@"iPhone"],
+              [TPSProduct productWithType:ProductTypeDevice name:@"iPod"],
+              [TPSProduct productWithType:ProductTypeDevice name:@"iPod touch"],
+             [TPSProduct productWithType:ProductTypeDevice name:@"iPod nano"],
+             [TPSProduct productWithType:ProductTypeDevice name:@"iPod classic"],
+              [TPSProduct productWithType:ProductTypeDevice name:@"iPad"],
+              [TPSProduct productWithType:ProductTypeDevice name:@"iPad mini"],
+              [TPSProduct productWithType:ProductTypeDevice name:@"iPad Air"],
+              [TPSProduct productWithType:ProductTypeDesktop name:@"iMac"],
+              [TPSProduct productWithType:ProductTypeDesktop name:@"Mac Pro"],
+              [TPSProduct productWithType:ProductTypeDesktop name:@"Mac mini"],
+              [TPSProduct productWithType:ProductTypePortable name:@"MacBook"],
+              [TPSProduct productWithType:ProductTypePortable name:@"MacBook Air"],
+              [TPSProduct productWithType:ProductTypePortable name:@"MacBook Pro"]];
+}
+
 + (instancetype)productWithType:(NSString *)type name:(NSString *)name {
     TPSProduct *newProduct = [[self alloc] init];
     newProduct.type = type;

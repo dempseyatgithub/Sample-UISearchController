@@ -18,22 +18,10 @@
 @implementation TPSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSArray *productArray = @[[TPSProduct productWithType:ProductTypeDevice name:@"iPhone"],
-                              [TPSProduct productWithType:ProductTypeDevice name:@"iPod"],
-                              [TPSProduct productWithType:ProductTypeDevice name:@"iPod touch"],
-                              [TPSProduct productWithType:ProductTypeDevice name:@"iPad"],
-                              [TPSProduct productWithType:ProductTypeDevice name:@"iPad mini"],
-                              [TPSProduct productWithType:ProductTypeDevice name:@"iPad Air"],
-                              [TPSProduct productWithType:ProductTypeDesktop name:@"iMac"],
-                              [TPSProduct productWithType:ProductTypeDesktop name:@"Mac Pro"],
-                              [TPSProduct productWithType:ProductTypeDesktop name:@"Mac mini"],
-                              [TPSProduct productWithType:ProductTypePortable name:@"MacBook"],
-                              [TPSProduct productWithType:ProductTypePortable name:@"MacBook Air"],
-                              [TPSProduct productWithType:ProductTypePortable name:@"MacBook Pro"]];
 
     UINavigationController *navigationController = (UINavigationController *)[self.window rootViewController];
     TPSMasterViewController *viewController = [navigationController.viewControllers objectAtIndex:0];
-    viewController.products = productArray;
+    viewController.products = [TPSProduct allProducts];
 
     return YES;
 }
