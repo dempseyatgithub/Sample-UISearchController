@@ -8,12 +8,15 @@
 //  Based on Apple sample code TableSearch version 2.0
 //
 
-#import "TPSMasterViewController.h"
+#import "TPSMasterViewController_TableResults.h"
 #import "TPSDetailViewController.h"
+#import "SearchResultsTableViewController.h"
 #import "TPSProduct.h"
 
+#define ENABLE_SCOPE_BUTTONS 1
 
-@interface TPSMasterViewController () <UISearchResultsUpdating>
+
+@interface TPSMasterViewController_TableResults () <UISearchResultsUpdating, UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSMutableArray *searchResults; // Filtered search results
@@ -22,18 +25,18 @@
 
 #pragma mark -
 
-@implementation TPSMasterViewController
+@implementation TPSMasterViewController_TableResults
 
 - (void)viewDidLoad {
 
     [super viewDidLoad];
 
+    self.products = [TPSProduct allProducts];
+
     // Create a mutable array to contain products for the search results table.
     self.searchResults = [NSMutableArray arrayWithCapacity:[self.products count]];
 
-    UITableViewController *searchResultsController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    searchResultsController.tableView.dataSource = self;
-    searchResultsController.tableView.delegate = self;
+    UITableViewController *searchResultsController = [[self storyboard] instantiateViewControllerWithIdentifier:@"TableSearchResultsNavController"];
 
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsController];
 
@@ -43,6 +46,21 @@
 
     self.tableView.tableHeaderView = self.searchController.searchBar;
 
+#if ENABLE_SCOPE_BUTTONS
+    
+    NSMutableArray *scopeButtonTitles = [[NSMutableArray alloc] init];
+    [scopeButtonTitles addObject:NSLocalizedString(@"All", @"Search display controller All button.")];
+
+    for (NSString *deviceType in [TPSProduct deviceTypeNames]) {
+        NSString *displayName = [TPSProduct displayNameForType:deviceType];
+        [scopeButtonTitles addObject:displayName];
+    }
+
+    self.searchController.searchBar.scopeButtonTitles = scopeButtonTitles;
+    self.searchController.searchBar.delegate = self;
+
+#endif
+
     self.definesPresentationContext = YES;
     
 }
@@ -50,21 +68,13 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     if ([segue.identifier isEqualToString:@"pushDetailView"]) {
-        
-        // Sender is the table view cell.
-        NSArray *sourceArray;
-        NSIndexPath *indexPath = [((UITableViewController *)self.searchController.searchResultsController).tableView indexPathForCell:(UITableViewCell *)sender];
-        if (indexPath != nil) {
-            sourceArray = self.searchResults;
-        } else {
-            indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
-            sourceArray = self.products;
-        }
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        TPSProduct *product = self.products[indexPath.row];
 
-        UIViewController *destinationController = segue.destinationViewController;
-        TPSProduct *product = sourceArray[indexPath.row];
-        ((TPSDetailViewController *)destinationController).product = product;
+        TPSDetailViewController *destinationController = segue.destinationViewController;
+        destinationController.product = product;
     }
+
 }
 
 
@@ -72,33 +82,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    /*  If the requesting table view is the search controller's table view, return the count of
-        the filtered list, otherwise return the count of the main list.
-     */
-    if (tableView == ((UITableViewController *)self.searchController.searchResultsController).tableView) {
-        return [self.searchResults count];
-    } else {
-        return [self.products count];
-    }
+    return [self.products count];
+
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ProductCell";
 
-    // Dequeue a cell from self's table view.
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    /*  If the requesting table view is the search controller's table view, configure the cell using the search results array, otherwise use the product array.
-     */
-    TPSProduct *product;
-
-    if (tableView == ((UITableViewController *)self.searchController.searchResultsController).tableView) {
-        product = [self.searchResults objectAtIndex:indexPath.row];
-    } else {
-        product = [self.products objectAtIndex:indexPath.row];
-    }
-
+    TPSProduct *product = [self.products objectAtIndex:indexPath.row];
     cell.textLabel.text = product.name;
     return cell;
 }
@@ -119,7 +113,21 @@
 
     [self updateFilteredContentForProductName:searchString type:scope];
     
-    [((UITableViewController *)self.searchController.searchResultsController).tableView reloadData];
+    if (self.searchController.searchResultsController) {
+        UINavigationController *navController = (UINavigationController *)self.searchController.searchResultsController;
+
+        SearchResultsTableViewController *vc = (SearchResultsTableViewController *)navController.topViewController;
+        vc.searchResults = self.searchResults;
+        [vc.tableView reloadData];
+    }
+
+}
+
+#pragma mark - UISearchBarDelegate
+
+// Workaround for bug: -updateSearchResultsForSearchController: is not called when scope buttons change
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    [self updateSearchResultsForSearchController:self.searchController];
 }
 
 

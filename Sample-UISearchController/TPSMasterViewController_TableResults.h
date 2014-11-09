@@ -1,5 +1,5 @@
 //
-//  TPSAppDelegate.m
+//  TPSMasterViewController.h
 //  Sample-UISearchController
 //
 //  Created by James Dempsey on 7/4/14.
@@ -8,10 +8,11 @@
 //  Based on Apple sample code TableSearch version 2.0
 //
 
-#import "TPSAppDelegate.h"
+#import <UIKit/UIKit.h>
 
-@interface TPSAppDelegate ()
+@interface TPSMasterViewController_TableResults : UITableViewController
+
+@property (nonatomic, strong) NSArray *products;
+
 @end
 
-@implementation TPSAppDelegate
-@end
