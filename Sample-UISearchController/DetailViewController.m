@@ -9,7 +9,7 @@
 //
 
 #import "DetailViewController.h"
-#import "TPSProduct.h"
+#import "Product.h"
 
 @interface DetailViewController ()
 @end

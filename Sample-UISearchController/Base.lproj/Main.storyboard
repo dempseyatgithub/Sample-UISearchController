@@ -28,7 +28,7 @@
         <!--Products-->
         <scene sceneID="FCO-Cd-yKz">
             <objects>
-                <tableViewController storyboardIdentifier="MasterViewController" id="wER-c4-mse" customClass="TPSMasterViewController_TableResults" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MasterViewController" id="wER-c4-mse" customClass="MasterViewController_TableResults" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="h0p-ar-kHG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
         <!--Products-->
         <scene sceneID="fQt-Wg-cdT">
             <objects>
-                <tableViewController id="RU0-2A-vo1" customClass="TPSMasterViewController_CollectionResults" sceneMemberID="viewController">
+                <tableViewController id="RU0-2A-vo1" customClass="MasterViewController_CollectionResults" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zYy-Wx-Yyp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +121,7 @@
         <!--Products-->
         <scene sceneID="z9w-S2-pZm">
             <objects>
-                <tableViewController id="Bf4-Ad-LvE" customClass="TPSMasterViewController_FilterResults" sceneMemberID="viewController">
+                <tableViewController id="Bf4-Ad-LvE" customClass="MasterViewController_FilterResults" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ser-AJ-cax">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

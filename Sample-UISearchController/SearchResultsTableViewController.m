@@ -8,7 +8,7 @@
 
 #import "SearchResultsTableViewController.h"
 #import "DetailViewController.h"
-#import "TPSProduct.h"
+#import "Product.h"
 
 @implementation SearchResultsTableViewController
 
@@ -20,7 +20,7 @@
 
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
 
-    TPSProduct *product = [self.searchResults objectAtIndex:indexPath.row];
+    Product *product = [self.searchResults objectAtIndex:indexPath.row];
 
     cell.textLabel.text = product.name;
 
@@ -29,7 +29,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TPSProduct *product = [self.searchResults objectAtIndex:indexPath.row];
+    Product *product = [self.searchResults objectAtIndex:indexPath.row];
     DetailViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailViewController"];
     self.presentingViewController.navigationItem.title = @"Search";
     vc.product = product;

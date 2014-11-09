@@ -10,10 +10,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class TPSProduct;
+@class Product;
 
 @interface DetailViewController : UIViewController
 
-@property (nonatomic, strong) TPSProduct *product;
+@property (nonatomic, strong) Product *product;
 
 @end

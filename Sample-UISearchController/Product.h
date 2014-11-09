@@ -14,7 +14,7 @@ extern NSString *const ProductTypeDevice;
 extern NSString *const ProductTypeDesktop;
 extern NSString *const ProductTypePortable;
 
-@interface TPSProduct : NSObject <NSCoding>
+@interface Product : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *type;

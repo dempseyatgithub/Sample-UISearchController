@@ -8,33 +8,33 @@
 //  Based on Apple sample code TableSearch version 2.0
 //
 
-#import "TPSProduct.h"
+#import "Product.h"
 
 NSString *const ProductTypeDevice = @"Device";
 NSString *const ProductTypeDesktop = @"Desktop";
 NSString *const ProductTypePortable = @"Portable";
 
-@implementation TPSProduct
+@implementation Product
 
 + (NSArray *)allProducts {
-    return @[[TPSProduct productWithType:ProductTypeDevice name:@"iPhone"],
-              [TPSProduct productWithType:ProductTypeDevice name:@"iPod"],
-              [TPSProduct productWithType:ProductTypeDevice name:@"iPod touch"],
-             [TPSProduct productWithType:ProductTypeDevice name:@"iPod nano"],
-             [TPSProduct productWithType:ProductTypeDevice name:@"iPod classic"],
-              [TPSProduct productWithType:ProductTypeDevice name:@"iPad"],
-              [TPSProduct productWithType:ProductTypeDevice name:@"iPad mini"],
-              [TPSProduct productWithType:ProductTypeDevice name:@"iPad Air"],
-              [TPSProduct productWithType:ProductTypeDesktop name:@"iMac"],
-              [TPSProduct productWithType:ProductTypeDesktop name:@"Mac Pro"],
-              [TPSProduct productWithType:ProductTypeDesktop name:@"Mac mini"],
-              [TPSProduct productWithType:ProductTypePortable name:@"MacBook"],
-              [TPSProduct productWithType:ProductTypePortable name:@"MacBook Air"],
-              [TPSProduct productWithType:ProductTypePortable name:@"MacBook Pro"]];
+    return @[[Product productWithType:ProductTypeDevice name:@"iPhone"],
+              [Product productWithType:ProductTypeDevice name:@"iPod"],
+              [Product productWithType:ProductTypeDevice name:@"iPod touch"],
+             [Product productWithType:ProductTypeDevice name:@"iPod nano"],
+             [Product productWithType:ProductTypeDevice name:@"iPod classic"],
+              [Product productWithType:ProductTypeDevice name:@"iPad"],
+              [Product productWithType:ProductTypeDevice name:@"iPad mini"],
+              [Product productWithType:ProductTypeDevice name:@"iPad Air"],
+              [Product productWithType:ProductTypeDesktop name:@"iMac"],
+              [Product productWithType:ProductTypeDesktop name:@"Mac Pro"],
+              [Product productWithType:ProductTypeDesktop name:@"Mac mini"],
+              [Product productWithType:ProductTypePortable name:@"MacBook"],
+              [Product productWithType:ProductTypePortable name:@"MacBook Air"],
+              [Product productWithType:ProductTypePortable name:@"MacBook Pro"]];
 }
 
 + (instancetype)productWithType:(NSString *)type name:(NSString *)name {
-    TPSProduct *newProduct = [[self alloc] init];
+    Product *newProduct = [[self alloc] init];
     newProduct.type = type;
     newProduct.name = name;
     return newProduct;

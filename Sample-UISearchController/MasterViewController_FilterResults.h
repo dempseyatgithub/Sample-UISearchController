@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TPSMasterViewController_CollectionResults : UITableViewController
+@interface MasterViewController_FilterResults : UITableViewController
 
 @property (nonatomic, strong) NSArray *products;
 

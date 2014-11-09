@@ -8,15 +8,15 @@
 //  Based on Apple sample code TableSearch version 2.0
 //
 
-#import "TPSMasterViewController_CollectionResults.h"
-#import "SearchResultsCollectionViewController.h"
+#import "MasterViewController_TableResults.h"
 #import "DetailViewController.h"
-#import "TPSProduct.h"
+#import "SearchResultsTableViewController.h"
+#import "Product.h"
 
 #define ENABLE_SCOPE_BUTTONS 1
 
 
-@interface TPSMasterViewController_CollectionResults () <UISearchResultsUpdating, UISearchBarDelegate>
+@interface MasterViewController_TableResults () <UISearchResultsUpdating, UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSMutableArray *searchResults; // Filtered search results
@@ -25,18 +25,18 @@
 
 #pragma mark -
 
-@implementation TPSMasterViewController_CollectionResults
+@implementation MasterViewController_TableResults
 
 - (void)viewDidLoad {
 
     [super viewDidLoad];
 
-    self.products = [TPSProduct allProducts];
+    self.products = [Product allProducts];
 
     // Create a mutable array to contain products for the search results table.
     self.searchResults = [NSMutableArray arrayWithCapacity:[self.products count]];
 
-    SearchResultsCollectionViewController *searchResultsController = [[self storyboard] instantiateViewControllerWithIdentifier:@"CollectionSearchResultsNavController"];
+    UITableViewController *searchResultsController = [[self storyboard] instantiateViewControllerWithIdentifier:@"TableSearchResultsNavController"];
 
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsController];
 
@@ -46,23 +46,35 @@
 
     self.tableView.tableHeaderView = self.searchController.searchBar;
 
-    self.definesPresentationContext = YES;
+#if ENABLE_SCOPE_BUTTONS
+    
+    NSMutableArray *scopeButtonTitles = [[NSMutableArray alloc] init];
+    [scopeButtonTitles addObject:NSLocalizedString(@"All", @"Search display controller All button.")];
 
+    for (NSString *deviceType in [Product deviceTypeNames]) {
+        NSString *displayName = [Product displayNameForType:deviceType];
+        [scopeButtonTitles addObject:displayName];
+    }
+
+    self.searchController.searchBar.scopeButtonTitles = scopeButtonTitles;
+    self.searchController.searchBar.delegate = self;
+
+#endif
+
+    self.definesPresentationContext = YES;
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     if ([segue.identifier isEqualToString:@"pushDetailView"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        Product *product = self.products[indexPath.row];
 
-        // Sender is the table view cell.
-        NSArray *sourceArray;
-        NSIndexPath*  indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
-        sourceArray = self.products;
-
-        UIViewController *destinationController = segue.destinationViewController;
-        TPSProduct *product = sourceArray[indexPath.row];
-        ((DetailViewController *)destinationController).product = product;
+        DetailViewController *destinationController = segue.destinationViewController;
+        destinationController.product = product;
     }
+
 }
 
 
@@ -71,15 +83,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return [self.products count];
+
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"ProductCell";
 
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ProductCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    TPSProduct *product = [self.products objectAtIndex:indexPath.row];
-
+    Product *product = [self.products objectAtIndex:indexPath.row];
     cell.textLabel.text = product.name;
     return cell;
 }
@@ -95,19 +108,26 @@
 
     NSInteger selectedScopeButtonIndex = [self.searchController.searchBar selectedScopeButtonIndex];
     if (selectedScopeButtonIndex > 0) {
-        scope = [[TPSProduct deviceTypeNames] objectAtIndex:(selectedScopeButtonIndex - 1)];
+        scope = [[Product deviceTypeNames] objectAtIndex:(selectedScopeButtonIndex - 1)];
     }
 
     [self updateFilteredContentForProductName:searchString type:scope];
-
+    
     if (self.searchController.searchResultsController) {
         UINavigationController *navController = (UINavigationController *)self.searchController.searchResultsController;
 
-        SearchResultsCollectionViewController *vc = (SearchResultsCollectionViewController *)navController.topViewController;
+        SearchResultsTableViewController *vc = (SearchResultsTableViewController *)navController.topViewController;
         vc.searchResults = self.searchResults;
-        [vc.collectionView reloadData];
+        [vc.tableView reloadData];
     }
 
+}
+
+#pragma mark - UISearchBarDelegate
+
+// Workaround for bug: -updateSearchResultsForSearchController: is not called when scope buttons change
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    [self updateSearchResultsForSearchController:self.searchController];
 }
 
 
@@ -123,7 +143,7 @@
         } else {
             // If there is no search string and the scope is chosen.
             NSMutableArray *searchResults = [[NSMutableArray alloc] init];
-            for (TPSProduct *product in self.products) {
+            for (Product *product in self.products) {
                 if ([product.type isEqualToString:typeName]) {
                     [searchResults addObject:product];
                 }
@@ -133,11 +153,12 @@
         return;
     }
 
+
     [self.searchResults removeAllObjects]; // First clear the filtered array.
 
     /*  Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
      */
-    for (TPSProduct *product in self.products) {
+    for (Product *product in self.products) {
         if ((typeName == nil) || [product.type isEqualToString:typeName]) {
             NSUInteger searchOptions = NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch;
             NSRange productNameRange = NSMakeRange(0, product.name.length);

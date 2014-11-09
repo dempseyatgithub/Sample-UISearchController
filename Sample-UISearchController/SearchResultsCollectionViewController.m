@@ -9,7 +9,7 @@
 #import "SearchResultsCollectionViewController.h"
 #import "SearchResultCollectionViewCell.h"
 #import "DetailViewController.h"
-#import "TPSProduct.h"
+#import "Product.h"
 
 @interface SearchResultsCollectionViewController ()
 
@@ -48,7 +48,7 @@ static NSString * const reuseIdentifier = @"SearchResultCell";
     SearchResultCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    TPSProduct *product = [self.searchResults objectAtIndex:indexPath.row];
+    Product *product = [self.searchResults objectAtIndex:indexPath.row];
     cell.titleLabel.text = product.name;
     
     return cell;
@@ -57,7 +57,7 @@ static NSString * const reuseIdentifier = @"SearchResultCell";
 #pragma mark <UICollectionViewDelegate>
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    TPSProduct *product = [self.searchResults objectAtIndex:indexPath.row];
+    Product *product = [self.searchResults objectAtIndex:indexPath.row];
     DetailViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailViewController"];
     self.presentingViewController.navigationItem.title = @"Search";
     vc.product = product;
