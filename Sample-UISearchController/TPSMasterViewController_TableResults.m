@@ -9,7 +9,7 @@
 //
 
 #import "TPSMasterViewController_TableResults.h"
-#import "TPSDetailViewController.h"
+#import "DetailViewController.h"
 #import "SearchResultsTableViewController.h"
 #import "TPSProduct.h"
 
@@ -71,7 +71,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         TPSProduct *product = self.products[indexPath.row];
 
-        TPSDetailViewController *destinationController = segue.destinationViewController;
+        DetailViewController *destinationController = segue.destinationViewController;
         destinationController.product = product;
     }
 

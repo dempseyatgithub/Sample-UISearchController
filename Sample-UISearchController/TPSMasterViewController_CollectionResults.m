@@ -10,7 +10,7 @@
 
 #import "TPSMasterViewController_CollectionResults.h"
 #import "SearchResultsCollectionViewController.h"
-#import "TPSDetailViewController.h"
+#import "DetailViewController.h"
 #import "TPSProduct.h"
 
 #define ENABLE_SCOPE_BUTTONS 1
@@ -61,7 +61,7 @@
 
         UIViewController *destinationController = segue.destinationViewController;
         TPSProduct *product = sourceArray[indexPath.row];
-        ((TPSDetailViewController *)destinationController).product = product;
+        ((DetailViewController *)destinationController).product = product;
     }
 }
 

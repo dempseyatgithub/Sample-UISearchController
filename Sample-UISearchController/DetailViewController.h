@@ -12,7 +12,7 @@
 
 @class TPSProduct;
 
-@interface TPSDetailViewController : UIViewController
+@interface DetailViewController : UIViewController
 
 @property (nonatomic, strong) TPSProduct *product;
 

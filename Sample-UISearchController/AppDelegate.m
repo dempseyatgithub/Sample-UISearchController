@@ -8,10 +8,10 @@
 //  Based on Apple sample code TableSearch version 2.0
 //
 
-#import "TPSAppDelegate.h"
+#import "AppDelegate.h"
 
-@interface TPSAppDelegate ()
+@interface AppDelegate ()
 @end
 
-@implementation TPSAppDelegate
+@implementation AppDelegate
 @end

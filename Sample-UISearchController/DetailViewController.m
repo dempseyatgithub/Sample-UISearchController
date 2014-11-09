@@ -8,13 +8,13 @@
 //  Based on Apple sample code TableSearch version 2.0
 //
 
-#import "TPSDetailViewController.h"
+#import "DetailViewController.h"
 #import "TPSProduct.h"
 
-@interface TPSDetailViewController ()
+@interface DetailViewController ()
 @end
 
-@implementation TPSDetailViewController
+@implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

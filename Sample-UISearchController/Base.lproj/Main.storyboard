@@ -177,7 +177,7 @@
         <!--Detail View Controller-->
         <scene sceneID="oP0-Fa-FuL">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="rTx-hZ-572" customClass="TPSDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="rTx-hZ-572" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bvm-8e-edD"/>
                         <viewControllerLayoutGuide type="bottom" id="sC9-yb-0AH"/>

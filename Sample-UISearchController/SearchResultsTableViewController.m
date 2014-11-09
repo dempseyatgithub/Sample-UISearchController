@@ -7,7 +7,7 @@
 //
 
 #import "SearchResultsTableViewController.h"
-#import "TPSDetailViewController.h"
+#import "DetailViewController.h"
 #import "TPSProduct.h"
 
 @implementation SearchResultsTableViewController
@@ -30,7 +30,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TPSProduct *product = [self.searchResults objectAtIndex:indexPath.row];
-    TPSDetailViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    DetailViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailViewController"];
     self.presentingViewController.navigationItem.title = @"Search";
     vc.product = product;
     [self.presentingViewController.navigationController pushViewController:vc animated:YES];

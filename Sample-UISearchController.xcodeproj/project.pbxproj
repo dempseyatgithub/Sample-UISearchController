@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		530D5EFD1967816C009E7D8D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 530D5EFC1967816C009E7D8D /* main.m */; };
-		530D5F001967816C009E7D8D /* TPSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 530D5EFF1967816C009E7D8D /* TPSAppDelegate.m */; };
+		530D5F001967816C009E7D8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 530D5EFF1967816C009E7D8D /* AppDelegate.m */; };
 		530D5F031967816C009E7D8D /* TPSMasterViewController_CollectionResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 530D5F021967816C009E7D8D /* TPSMasterViewController_CollectionResults.m */; };
 		530D5F061967816C009E7D8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530D5F041967816C009E7D8D /* Main.storyboard */; };
 		530D5F081967816C009E7D8D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 530D5F071967816C009E7D8D /* Images.xcassets */; };
 		530D5F141967816C009E7D8D /* Sample_UISearchControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 530D5F131967816C009E7D8D /* Sample_UISearchControllerTests.m */; };
 		530D5F1F1967838F009E7D8D /* TPSProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 530D5F1E1967838F009E7D8D /* TPSProduct.m */; };
-		530D5F2219678D38009E7D8D /* TPSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530D5F2119678D38009E7D8D /* TPSDetailViewController.m */; };
+		530D5F2219678D38009E7D8D /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530D5F2119678D38009E7D8D /* DetailViewController.m */; };
 		536652E619CDF67500AF3B76 /* SearchResultsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 536652E319CDF67500AF3B76 /* SearchResultsCollectionViewController.m */; };
 		536652E719CDF67500AF3B76 /* SearchResultCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 536652E519CDF67500AF3B76 /* SearchResultCollectionViewCell.m */; };
 		536652EB19CDF73400AF3B76 /* TPSMasterViewController_TableResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 536652EA19CDF73400AF3B76 /* TPSMasterViewController_TableResults.m */; };
@@ -36,8 +36,8 @@
 		530D5EF71967816C009E7D8D /* Sample-UISearchController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-UISearchController.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		530D5EFB1967816C009E7D8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		530D5EFC1967816C009E7D8D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		530D5EFE1967816C009E7D8D /* TPSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPSAppDelegate.h; sourceTree = "<group>"; };
-		530D5EFF1967816C009E7D8D /* TPSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPSAppDelegate.m; sourceTree = "<group>"; };
+		530D5EFE1967816C009E7D8D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		530D5EFF1967816C009E7D8D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		530D5F011967816C009E7D8D /* TPSMasterViewController_CollectionResults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPSMasterViewController_CollectionResults.h; sourceTree = "<group>"; };
 		530D5F021967816C009E7D8D /* TPSMasterViewController_CollectionResults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPSMasterViewController_CollectionResults.m; sourceTree = "<group>"; };
 		530D5F051967816C009E7D8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,8 +47,8 @@
 		530D5F131967816C009E7D8D /* Sample_UISearchControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample_UISearchControllerTests.m; sourceTree = "<group>"; };
 		530D5F1D1967838F009E7D8D /* TPSProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSProduct.h; sourceTree = "<group>"; };
 		530D5F1E1967838F009E7D8D /* TPSProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSProduct.m; sourceTree = "<group>"; };
-		530D5F2019678D38009E7D8D /* TPSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSDetailViewController.h; sourceTree = "<group>"; };
-		530D5F2119678D38009E7D8D /* TPSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSDetailViewController.m; sourceTree = "<group>"; };
+		530D5F2019678D38009E7D8D /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		530D5F2119678D38009E7D8D /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		534E54F819688809006FC505 /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		536652E219CDF67500AF3B76 /* SearchResultsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsCollectionViewController.h; sourceTree = "<group>"; };
 		536652E319CDF67500AF3B76 /* SearchResultsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsCollectionViewController.m; sourceTree = "<group>"; };
@@ -102,10 +102,10 @@
 		530D5EF91967816C009E7D8D /* Sample-UISearchController */ = {
 			isa = PBXGroup;
 			children = (
-				530D5EFE1967816C009E7D8D /* TPSAppDelegate.h */,
-				530D5EFF1967816C009E7D8D /* TPSAppDelegate.m */,
-				530D5F2019678D38009E7D8D /* TPSDetailViewController.h */,
-				530D5F2119678D38009E7D8D /* TPSDetailViewController.m */,
+				530D5EFE1967816C009E7D8D /* AppDelegate.h */,
+				530D5EFF1967816C009E7D8D /* AppDelegate.m */,
+				530D5F2019678D38009E7D8D /* DetailViewController.h */,
+				530D5F2119678D38009E7D8D /* DetailViewController.m */,
 				530D5F1D1967838F009E7D8D /* TPSProduct.h */,
 				530D5F1E1967838F009E7D8D /* TPSProduct.m */,
 				536652EC19CDF99200AF3B76 /* TableViewResults */,
@@ -278,8 +278,8 @@
 			files = (
 				530D5F031967816C009E7D8D /* TPSMasterViewController_CollectionResults.m in Sources */,
 				536652E619CDF67500AF3B76 /* SearchResultsCollectionViewController.m in Sources */,
-				530D5F001967816C009E7D8D /* TPSAppDelegate.m in Sources */,
-				530D5F2219678D38009E7D8D /* TPSDetailViewController.m in Sources */,
+				530D5F001967816C009E7D8D /* AppDelegate.m in Sources */,
+				530D5F2219678D38009E7D8D /* DetailViewController.m in Sources */,
 				536652F519CE005000AF3B76 /* TPSMasterViewController_FilterResults.m in Sources */,
 				536652EF19CDF9B600AF3B76 /* SearchResultsTableViewController.m in Sources */,
 				530D5EFD1967816C009E7D8D /* main.m in Sources */,

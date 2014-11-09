@@ -8,7 +8,7 @@
 
 #import "SearchResultsCollectionViewController.h"
 #import "SearchResultCollectionViewCell.h"
-#import "TPSDetailViewController.h"
+#import "DetailViewController.h"
 #import "TPSProduct.h"
 
 @interface SearchResultsCollectionViewController ()
@@ -58,7 +58,7 @@ static NSString * const reuseIdentifier = @"SearchResultCell";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     TPSProduct *product = [self.searchResults objectAtIndex:indexPath.row];
-    TPSDetailViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    DetailViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailViewController"];
     self.presentingViewController.navigationItem.title = @"Search";
     vc.product = product;
     [self.presentingViewController.navigationController pushViewController:vc animated:YES];
