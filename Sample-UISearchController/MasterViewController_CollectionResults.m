@@ -36,7 +36,8 @@
     // Create a mutable array to contain products for the search results table.
     self.searchResults = [NSMutableArray arrayWithCapacity:[self.products count]];
 
-    SearchResultsCollectionViewController *searchResultsController = [[self storyboard] instantiateViewControllerWithIdentifier:@"CollectionSearchResultsNavController"];
+    // The collection view controller is in a nav controller, and so the containing nav controller is the 'search results controller'
+    UINavigationController *searchResultsController = [[self storyboard] instantiateViewControllerWithIdentifier:@"CollectionSearchResultsNavController"];
 
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsController];
 
